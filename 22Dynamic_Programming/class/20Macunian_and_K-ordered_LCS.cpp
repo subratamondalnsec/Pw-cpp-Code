@@ -1,3 +1,8 @@
+/*
+Code BY Subrata Mondal
+problem link : 
+*/
+/* memorization */
 #include <bits/stdc++.h>
 using namespace std;
 #define ll long long int
@@ -41,6 +46,53 @@ int main() {//it is string case it next 21 is number
     cout << ans << endl;
     return 0;
 }
-// ordered
-// ordjhed
-// 3
+
+/* Tabulation */
+
+#include <bits/stdc++.h>
+using namespace std;
+
+#define ll long long int
+const int MAXN = 2005;  // Constraints limit for array size
+ll dp[MAXN][MAXN][8];
+
+int main() {
+    string a, b;
+    cin >> a >> b;
+    int k;
+    cin >> k;
+
+    int n = a.size();
+    int m = b.size();
+
+    // Initialize DP array
+    memset(dp, 0, sizeof(dp));
+
+    // Fill the DP table iteratively
+    for (int i = 1; i <= n; i++) {
+        for (int j = 1; j <= m; j++) {
+            for (int kk = 0; kk <= k; kk++) {
+                // Case 1: Characters match
+                if (a[i-1] == b[j-1]) {
+                    dp[i][j][kk] = dp[i-1][j-1][kk] + 1;
+                }
+                // Case 2: Characters don't match, but substitution is allowed
+                else if (kk > 0) {
+                    dp[i][j][kk] = dp[i-1][j-1][kk-1] + 1;
+                }
+                // Case 3: Maximize by skipping an element from either sequence
+                dp[i][j][kk] = max(dp[i][j][kk], dp[i-1][j][kk]);
+                dp[i][j][kk] = max(dp[i][j][kk], dp[i][j-1][kk]);
+            }
+        }
+    }
+
+    // Find the maximum length with up to k mismatches
+    ll ans = 0;
+    for (int kk = 0; kk <= k; kk++) {
+        ans = max(ans, dp[n][m][kk]);
+    }
+
+    cout << ans << endl;
+    return 0;
+}
