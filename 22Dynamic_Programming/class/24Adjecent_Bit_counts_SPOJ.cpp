@@ -1,3 +1,7 @@
+/*
+Code BY Subrata Mondal
+problem link : https://www.spoj.com/problems/GNYR09F/
+*/
 #include <bits/stdc++.h>
 using namespace std;
 int dp[102][102][2];
