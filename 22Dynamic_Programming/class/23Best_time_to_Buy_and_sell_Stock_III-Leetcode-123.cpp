@@ -1,9 +1,13 @@
+/*
+Code BY Subrata Mondal
+problem link : https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/description/
+*/
 #include <bits/stdc++.h>
 using namespace std;
 class Solution{
 public:
-    int dp[100][5][2];//vs code
-    //int dp[100005][5][2];
+    //int dp[100][5][2];//vs code
+    int dp[100005][5][2];
     int f(vector<int>&prices,int i, int k,bool on){
         if(i==prices.size()) return 0;
         if(dp[i][k][on]!=-1) return dp[i][k][on];
