@@ -1,40 +1,26 @@
+/*
+Code BY Subrata Mondal
+problem link : https://leetcode.com/problems/unique-binary-search-trees/
+*/
 #include <bits/stdc++.h>
 using namespace std;
-// class Solution{//recursion
-// public:
-//     int f(int n){
-//         if(n==0 || n==1) return 1;
-//         if(n==2) return 2;
-//         int sum=0;
-//         for(int i=1;i<=n;i++){
-//             sum+=f(i-1)*f(n-i);
-//         }
-//         return sum;
-//     }
-//     int numTrees(int n){
-//         return f(n);
-//     }
-// };
+class Solution{//recursion
+public:
+    int f(int n){
+        if(n==0 || n==1) return 1;
+        if(n==2) return 2;
+        int sum=0;
+        for(int i=1;i<=n;i++){
+            sum+=f(i-1)*f(n-i);
+        }
+        return sum;
+    }
+    int numTrees(int n){
+        return f(n);
+    }
+};
 
-// class Solution{//dp meorization
-// public:
-//     int f(int n,vector<int>&dp){
-//         if(n==0 || n==1) return 1;
-//         if(n==2) return 2;
-//         if(dp[n]!=-1) return dp[n];
-//         int sum=0;
-//         for(int i=1;i<=n;i++){
-//             sum+=f(i-1,dp)*f(n-i,dp);
-//         }
-//         return dp[n]= sum;
-//     }
-//     int numTrees(int n){
-//         vector<int>dp(n+1,-1);
-//         return f(n,dp);
-//     }
-// };
-
-class Solution{//dp tabulation
+class Solution{//dp meorization
 public:
     int f(int n,vector<int>&dp){
         if(n==0 || n==1) return 1;
@@ -46,6 +32,14 @@ public:
         }
         return dp[n]= sum;
     }
+    int numTrees(int n){
+        vector<int>dp(n+1,-1);
+        return f(n,dp);
+    }
+};
+
+class Solution{//dp tabulation
+public:
     int numTrees(int n){
         vector<int>dp(n+3,0);
         dp[0]=dp[1]=1;
