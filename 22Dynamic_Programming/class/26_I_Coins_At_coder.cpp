@@ -1,3 +1,7 @@
+/*
+Code BY Subrata Mondal
+problem link : https://atcoder.jp/contests/dp/tasks/dp_i
+*/
 #include <iostream>
 #include <vector>
 #include <iomanip>//setprecision =>koto decimal place por jonto chai
