@@ -1,3 +1,6 @@
+/*
+code by Subrata Mondal
+*/
 #include<iostream>
 #include<vector>
 #include <unordered_map>
