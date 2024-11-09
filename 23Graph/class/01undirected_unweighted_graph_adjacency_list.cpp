@@ -1,3 +1,7 @@
+
+/*
+code by Subrata Mondal
+*/
 #include<iostream>
 #include<vector>
 #include<list>
